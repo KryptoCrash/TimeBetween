@@ -1,7 +1,7 @@
 function time(func, timesToRun, intervalBetween) {
 	//Setup default variables.
 	func = func || new Function()
-	timesToRun = timesToRun || 1
+	timesToRun = timesToRun || 10
 
 	let result = {
 		averageTime: 0,
@@ -17,7 +17,17 @@ function time(func, timesToRun, intervalBetween) {
 			compiled()
 			let endTime = new Date()
 			result.times.push((endTime - startTime) / 1000)
-			console.log(`Run #${i}: ${(endTime - startTime) / 1000}`)
-    	}, intervalBetween)
+			console.log(`Run #${i + 1}: ${(endTime - startTime) / 1000}`)
+    		}, intervalBetween)
 	}
+	
+	//Get the sum of all the times.
+	for (let o=0; o<result.times.length; o++) {
+		//result.averageTime += result.time[o]
+		alert(result.times[o])
+	}
+	//Get the average of all the numbers.
+	result.averageTime /= result.times.length
+	
+	return result
 }
